@@ -3,7 +3,7 @@ import { intervalAtom, seriesAtom, seriesInterface, symbolAtom } from "@/store";
 import axios from "axios";
 import { useAtom, useSetAtom } from "jotai";
 import { useState } from "react";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "../components/ui/use-toast";
 
 export type candleStickAPIType = [
   number,
