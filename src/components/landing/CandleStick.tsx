@@ -15,7 +15,6 @@ export const CandleStick = () => {
     async function api() {
       await fetchCrypto("BTCUSDT", "1h")
     }
-    setTimeout()
     api();
   }, [interval]);
 
