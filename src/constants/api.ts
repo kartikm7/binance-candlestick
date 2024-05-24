@@ -1,0 +1,1 @@
+export const candleStickAPI = "https://api.binance.com/api/v3/klines"
