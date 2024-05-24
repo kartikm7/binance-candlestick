@@ -3,7 +3,7 @@ import { intervalAtom, seriesAtom, seriesInterface, symbolAtom } from "@/store";
 import axios from "axios";
 import { useAtom, useSetAtom } from "jotai";
 import { useState } from "react";
-import { useToast } from "../components/ui/use-toast";
+import { toast } from "sonner";
 
 export type candleStickAPIType = [
   number,
@@ -22,7 +22,6 @@ export type candleStickAPIType = [
 
 export const useFetch = () => {
   // Getting the values and set functions for states
-  const { toast } = useToast();
   const [isLoading, setLoading] = useState<boolean>(false);
   const setSeries = useSetAtom(seriesAtom);
   const [symbol, setSymbol] = useAtom(symbolAtom);
@@ -50,7 +49,7 @@ export const useFetch = () => {
       // console.log(response);
     } catch (error) {
       setLoading(false);
-      toast({ title: `Incorrect Input! \n Please check binance.com for better understanding`, variant: "destructive" });
+      toast.error(`Incorrect Input! \n Please check binance.com for better understanding`);
     }
   };
 

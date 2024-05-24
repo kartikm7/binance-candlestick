@@ -6,12 +6,12 @@ import { useAtom } from "jotai";
 import { symbolAtom } from "@/store";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { ZodSchema } from "zod";
 type FormFields = {
   crypto?: string;
 };
 
-const validate = z.object({
+const validate: ZodSchema<FormFields> = z.object({
   crypto: z
     .string()
     .min(1, "An asset is required")

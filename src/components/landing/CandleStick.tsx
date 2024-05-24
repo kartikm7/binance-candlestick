@@ -7,10 +7,9 @@ import { intervalAtom, seriesAtom, symbolAtom } from "@/store";
 import { SelectInterval } from "./SelectInterval";
 import { CryptoForm } from "./CryptoForm";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-import { useToast } from "../ui/use-toast";
+import { toast } from "sonner";
 
 export const CandleStick = () => {
-  const {toast} = useToast()
   const series = useAtomValue(seriesAtom);
   const interval = useAtomValue(intervalAtom);
   const symbol = useAtomValue(symbolAtom);
@@ -18,7 +17,7 @@ export const CandleStick = () => {
   const topSymbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "ADAUSDT", "XRPUSDT"];
 
   function handleClick(val:string){
-    toast({title: `${val} has been copied to your clipboard!`})
+    toast(`${val} has been copied to your clipboard!`)
   }
 
   useEffect(() => {
