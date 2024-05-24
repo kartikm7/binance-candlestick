@@ -74,6 +74,8 @@ export const useFetch = () => {
       default:
         throw new Error('Invalid interval unit');
   }
+  console.log(milliseconds);
+  
   return milliseconds
 }
 

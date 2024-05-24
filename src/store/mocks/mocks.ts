@@ -1,11 +1,6 @@
 export const options = {
   chart: {
     type: 'candlestick' as const, // Explicitly cast 'candlestick' to the correct type
-    height: 350
-  },
-  title: {
-    text: 'CandleStick Chart' as const,
-    align: 'left' as const
   },
   xaxis: {
     type: 'datetime' as const
