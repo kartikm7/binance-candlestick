@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useAtomValue } from "jotai";
 import { intervalAtom, seriesAtom, symbolAtom } from "@/store";
 import { SelectInterval } from "./SelectInterval";
+import { CryptoForm } from "./CryptoForm";
 
 export const CandleStick = () => {
   const series = useAtomValue(seriesAtom);
@@ -20,12 +21,18 @@ export const CandleStick = () => {
     const ms = parseInterval(interval);
     const id = setInterval(api, ms);
     return () => clearInterval(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [interval, symbol]); // must since, parseInterval and the fetchCrypto affects the state updation
 
   return (
     <div className="min-h-[500px] text-black">
-      <SelectInterval />
+      <div className="flex gap-5">
+        <div className="flex flex-col gap-2 text-foreground">
+        <h1 className="text-sm">Select Asset:</h1>
+        <CryptoForm />
+        </div>
+        <SelectInterval />
+      </div>
       <Chart
         options={{
           title: {

@@ -50,7 +50,7 @@ export const useFetch = () => {
       // console.log(response);
     } catch (error) {
       setLoading(false);
-      toast({ title: `${error}`, variant: "destructive" });
+      toast({ title: `Incorrect Input! \n Please check binance.com for better understanding`, variant: "destructive" });
     }
   };
 
