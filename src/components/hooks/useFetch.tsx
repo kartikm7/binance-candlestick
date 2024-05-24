@@ -46,8 +46,8 @@ export const useFetch = () => {
         return { x: new Date(val[0]), y: [val[1], val[2], val[3], val[4]] };
       });
       setLoading(false);
-      setSeries(response.splice(400));
-      console.log(response);
+      setSeries(response.splice(450));
+      // console.log(response);
     } catch (error) {
       setLoading(false);
       toast({ title: `${error}`, variant: "destructive" });
@@ -74,7 +74,7 @@ export const useFetch = () => {
       default:
         throw new Error('Invalid interval unit');
   }
-  console.log(milliseconds);
+  // console.log(milliseconds);
   
   return milliseconds
 }
