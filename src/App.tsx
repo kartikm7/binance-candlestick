@@ -1,19 +1,22 @@
+import { useAtomValue } from "jotai";
 import { RootLayout } from "./components/AppLayout";
 import { CandleStick } from "./components/landing/CandleStick";
 import { Toaster } from "./components/ui/sonner";
+import { darkModeAtom } from "./store";
+import { Navbar } from "./components/landing/Navbar";
 
 function App() {
+  const darkMode = useAtomValue(darkModeAtom);
   return (
-    <RootLayout className="dark h-screen p-5 gap-10">
-      <Toaster />
-      <h1 className="text-3xl">
-        Binance <span className="font-medium">Candlestick</span>
-      </h1>
-      <div>
+    <div className={`${darkMode && "dark"}`}>
+      <Toaster /> {/* weird behavior without it being at the top of the html chain */}
+      <RootLayout
+        className={`h-screen p-5 gap-10 overflow-hidden`}
+      >
+        <Navbar />
         <CandleStick />
-      </div>
-      <div></div>
-    </RootLayout>
+      </RootLayout>
+    </div>
   );
 }
 

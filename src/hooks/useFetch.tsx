@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAtom, useSetAtom } from "jotai";
 import { useState } from "react";
 import { toast } from "sonner";
+import { DateTime } from "luxon"
 
 export type candleStickAPIType = [
   number,
@@ -26,6 +27,8 @@ export const useFetch = () => {
   const setSeries = useSetAtom(seriesAtom);
   const [symbol, setSymbol] = useAtom(symbolAtom);
   const [interval, setInterval] = useAtom(intervalAtom);
+
+
   // setting the default values for the api call
   const fetchCrypto = async (
     apiSymbol: string = symbol,
@@ -38,21 +41,22 @@ export const useFetch = () => {
     try {
       setLoading(true);
       const api = await axios.get(
-        `${candleStickAPI}?symbol=${symbol}&interval=${interval}`
+        `${candleStickAPI}?symbol=${symbol}&interval=${interval}&limit=50`
       );
       const data: candleStickAPIType = api.data;
       const response: seriesInterface[] = data.map((val) => {
         return { x: new Date(val[0]), y: [val[1], val[2], val[3], val[4]] };
       });
       setLoading(false);
-      setSeries(response.splice(450));
-      // console.log(response);
+      setSeries(response);
     } catch (error) {
       setLoading(false);
       toast.error(`Incorrect Input! \n Please check binance.com for better understanding`);
     }
   };
 
+
+  // using this for parsing the interval from string to milliseconds
   const parseInterval = (val:string) => {
     const value = parseInt(val.slice(0,-1))
     const unit = val.slice(-1);
@@ -73,7 +77,6 @@ export const useFetch = () => {
       default:
         throw new Error('Invalid interval unit');
   }
-  // console.log(milliseconds);
   
   return milliseconds
 }

@@ -8,3 +8,4 @@ export interface seriesInterface {
 export const seriesAtom = atom<seriesInterface[]>([])  
 export const symbolAtom = atom<string>('BTCUSDT')
 export const intervalAtom = atom<string>('1h')
+export const darkModeAtom = atom<boolean>(true)
