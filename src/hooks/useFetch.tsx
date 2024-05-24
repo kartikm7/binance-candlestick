@@ -4,7 +4,6 @@ import axios from "axios";
 import { useAtom, useSetAtom } from "jotai";
 import { useState } from "react";
 import { toast } from "sonner";
-import { DateTime } from "luxon"
 
 export type candleStickAPIType = [
   number,
